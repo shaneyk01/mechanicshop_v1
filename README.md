@@ -20,6 +20,8 @@ A RESTful API for managing a mechanic shop's operations, including customers, me
 - **Serialization**: Marshmallow 4.1.1 & Flask-Marshmallow 1.3.0
 - **Python Version**: Python 3.x
 
+> **Note**: Version numbers listed here reflect the versions at the time of documentation. For the exact and up-to-date versions, please refer to `requirements.txt`.
+
 ### Key Dependencies
 
 - Flask-SQLAlchemy 3.1.1
@@ -164,9 +166,12 @@ The application will automatically create all necessary database tables on first
    - `mechanic_id` (Foreign Key → mechanics.id)
    - `Date` (DateTime, required)
    - `service_description` (String, required)
+   - Relationship: One-to-many with customers, many-to-many with mechanics through ticket_mechanic table
 
 4. **ticket_mechanic** (Association Table)
-   - Many-to-many relationship between service_tickets and mechanics
+   - `ticket_id` (Foreign Key → service_tickets.id)
+   - `mechanic_id` (Foreign Key → mechanics.id)
+   - Enables many-to-many relationship between service_tickets and mechanics
 
 ## Project Structure
 
