@@ -65,11 +65,11 @@ Update the database connection string in `config.py`:
 
 ```python
 class DevelopmentConfig:
-    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://username:password@localhost/mechanic_shop_v1'
+    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://your_username:your_password@localhost/mechanic_shop_v1'
     DEBUG = True
 ```
 
-Replace `username` and `password` with your MySQL credentials.
+Replace `your_username` and `your_password` with your MySQL credentials.
 
 ## Running the Application
 
