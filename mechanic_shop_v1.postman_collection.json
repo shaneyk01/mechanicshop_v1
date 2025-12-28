@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "3d76591e-eb80-45e7-8b80-3b7f43efc2cd",
+		"name": "mechanic_shop_v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40381624"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "create customer",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Shaney Kalilikane\",\r\n    \"email\":\"shakalili86@gmail.com\",\r\n    \"phone\":\"8087234235\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "update customers",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kingston Kalilikane\",\r\n    \"email\":\"kingstonk@gmail.com\",\r\n    \"phone\":\"8087890987\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/customers/5"
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kingston Kalilikane\",\r\n    \"email\":\"kingstonk@gmail.com\",\r\n    \"phone\":\"8087890987\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/customers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get a customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get customer",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:5000/customers"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mechanics",
+			"item": [
+				{
+					"name": "create mechanic",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brad Alakai\",\r\n    \"email\": \"test22@email.com\",\r\n    \"salary\": 6500.00,\r\n    \"password\": \"123\",\r\n    \"phone\":\"8087234323\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/mechanics"
+					},
+					"response": []
+				},
+				{
+					"name": "get mechanics",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:5000/mechanics"
+					},
+					"response": []
+				},
+				{
+					"name": "New request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "update mechanic",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Updated Name\",\r\n  \"email\":\"test@email.com\",\r\n  \"salary\": \"80000\",\r\n  \"password\":\"123\",\r\n  \"phone\":\"7656765675\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/mechanics/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete mechanic",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5000/mechanics/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service_tickets",
+			"item": [
+				{
+					"name": "create service_tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer_id\": 2,\r\n  \"mechanic_id\": 2,\r\n  \"Date\": \"2025-12-27T10:30:00\",\r\n  \"service_description\": \"Oil change and filter replacement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5000/service_tickets"
+					},
+					"response": []
+				},
+				{
+					"name": "get service_tickets",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/service_tickets"
+					},
+					"response": []
+				},
+				{
+					"name": "add mechanic to ticket",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:5000/service_tickets/4/add_mechanic/2"
+					},
+					"response": []
+				},
+				{
+					"name": "remove mechanic",
+					"request": {
+						"auth": {
+							"type": "inherit",
+							"inherit": {}
+						},
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:5000/service_tickets/4/remove_mechanic/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
