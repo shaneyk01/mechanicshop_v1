@@ -8,6 +8,7 @@ This application provides endpoints to manage:
 - **Customers**: Create and manage customer information
 - **Mechanics**: Create and manage mechanic profiles with salary information
 - **Service Tickets**: Create service requests, assign mechanics, and track repairs
+- **Inventory**: Manage inventory items (parts, supplies) and associate them with service tickets
 
 
 
@@ -170,12 +171,69 @@ DELETE /service_tickets/{ticket_id}
 
 #### Add Mechanic to Service Ticket
 ```
-PUT /service_tickets/{ticket_id}/add mechanic/{mechanic_id}
+PUT /service_tickets/{ticket_id}/add_mechanic/{mechanic_id}
 ```
 
 #### Remove Mechanic from Service Ticket
 ```
-PUT /service_tickets/{ticket_id}/remove mechanic/{mechanic_id}
+PUT /service_tickets/{ticket_id}/remove_mechanic/{mechanic_id}
+```
+
+#### Update Service Ticket (Edit)
+```
+PUT /service_tickets/{ticket_id}
+```
+**Request Body:**
+```json
+{
+  "add_mechanic_ids": [2, 3],
+  "remove_mechanic_ids": [1],
+  "add_item": [1, 2]
+}
+```
+**Description:** Bulk update to add/remove mechanics and associate inventory items with a service ticket.
+
+---
+
+### Inventory
+
+#### Create Inventory Item
+```
+POST /inventory/
+```
+**Request Body:**
+```json
+{
+  "name": "Oil Filter",
+  "price": 15.99
+}
+```
+
+#### Get All Inventory Items
+```
+GET /inventory/
+```
+
+#### Get Inventory Item by ID
+```
+GET /inventory/{item_id}
+```
+
+#### Update Inventory Item
+```
+PUT /inventory/{item_id}
+```
+**Request Body:**
+```json
+{
+  "name": "Premium Oil Filter",
+  "price": 19.99
+}
+```
+
+#### Delete Inventory Item
+```
+DELETE /inventory/{item_id}
 ```
 
 ---
@@ -207,6 +265,13 @@ PUT /service_tickets/{ticket_id}/remove mechanic/{mechanic_id}
 - `service_description` (string, max 1000 chars, required)
 - `customers` (relationship to Customer)
 - `mechanics` (many-to-many relationship)
+- `items` (many-to-many relationship to Inventory)
+
+### Inventory
+- `id` (int, primary key)
+- `name` (string, required)
+- `price` (float, required)
+- `service_tickets` (many-to-many relationship to ServiceTicket)
 
 ---
 
@@ -215,6 +280,8 @@ PUT /service_tickets/{ticket_id}/remove mechanic/{mechanic_id}
 - **Flask** - Web framework
 - **Flask-SQLAlchemy** - ORM for database interactions
 - **Marshmallow** - Data serialization/deserialization
+- **Flask-Limiter** - Rate limiting for API endpoints
+- **Flask-Caching** - Response caching for improved performance
 - **MySQL** - Database
 - **mysql-connector-python** - MySQL driver
 
@@ -244,6 +311,9 @@ Error responses include descriptive messages to help with debugging.
 - SQLAlchemy handles all database operations
 - Foreign key constraints are enforced at the database level
 - The many-to-many relationship between mechanics and service tickets is handled through the `ticket_mechanic` association table
+- The many-to-many relationship between service tickets and inventory items is handled through the `ticket_item` association table
+- Rate limiting is implemented to prevent API abuse
+- Caching is configured to improve response times for frequently accessed data
 
 ## Future Improvements
 
