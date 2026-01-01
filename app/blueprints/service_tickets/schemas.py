@@ -26,9 +26,13 @@ class ServiceTicketSchema(ma.SQLAlchemyAutoSchema):
         fields = ("id", "Date", "customer_id", "service_description", "mechanic_id", "mechanics")
 
 class EditTicketSchema(ma.Schema):
-    add_mechanic_ids = fields.List(fields.Int,required=True)
-    remove_mechanic_ids = fields.List(fields.Int,required=True)
-    fields = ("add_mechanic_ids","remove_mechanic_ids")
+    add_mechanic_ids = fields.List(fields.Int, required=True)
+    remove_mechanic_ids = fields.List(fields.Int, required=True)
+    add_item = fields.List(fields.Int, required=False, load_default=[])
+    remove_item = fields.List(fields.Int, required=False, load_default=[])
+    
+    class Meta:
+        fields = ("add_mechanic_ids", "remove_mechanic_ids", "add_item", "remove_item")
 
 
 

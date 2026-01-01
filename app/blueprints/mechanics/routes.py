@@ -1,10 +1,10 @@
 from flask import jsonify, request
 from marshmallow import ValidationError 
-from sqlalchemy import select, delete
+from sqlalchemy import select, delete, func
 from sqlalchemy.exc import SQLAlchemyError
 from . import mechanics_bp
-from .schemas import mechanic_schema, mechanics_schema
-from app.models import Mechanic, db, ticket_mechanic
+from .schemas import mechanic_schema, mechanics_schemas
+from app.models import Mechanic, db, ticket_mechanic, ServiceTicket
 
 
 @mechanics_bp.route('/', methods=['POST'])
@@ -30,6 +30,13 @@ def get_mechanics():
     query =select(Mechanic)
     mechanics= db.session.execute(query).scalars().all()
     return mechanics_schema.jsonify(mechanics), 200
+
+@mechanics_bp.route('/<int:mechanic_id>', methods=['GET'])
+def get_a_mechanic(mechanic_id):
+    mechanic = db.session.get(Mechanic, mechanic_id)
+    if not mechanic:
+        return jsonify({'message': 'Mechanic not found'}), 404
+    return mechanic_schema.jsonify(mechanic), 200
 
 @mechanics_bp.route('/<int:mechanic_id>', methods=['PUT'])
 def update_mechanic(mechanic_id):
@@ -65,3 +72,10 @@ def delete_mechanic(mechanic_id):
     except SQLAlchemyError as e:
         db.session.rollback()
         return jsonify({'error': 'Deletion failed', 'detail': str(e)}), 500
+
+@mechanics_bp.route('/popular', methods=['GET'])
+def popular_mechanic():
+    from sqlalchemy import func
+    query = select(Mechanic).outerjoin(Mechanic.service_tickets).group_by(Mechanic.id).order_by(func.count(ServiceTicket.id).desc())
+    mechanics = db.session.execute(query).scalars().all()
+    return mechanics_schema.jsonify(mechanics), 200
