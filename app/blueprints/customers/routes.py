@@ -58,10 +58,12 @@ def get_a_customer(customer_id):
 
 @customers_bp.route('/<int:customer_id>', methods=['PUT'])
 @token_required
-def update_customer(customer_id):
+def update_customer(current_user, customer_id):
     customer = db.session.get(Customer, customer_id)
     if not customer:
         return jsonify({'message': 'Customer not found'}), 404
+    if current_user.id != customer.id:
+        return jsonify({'message': 'Unauthorized to update this customer'}), 403
     try:
         customer_data = customer_schema.load(request.json)
     except ValidationError as e:

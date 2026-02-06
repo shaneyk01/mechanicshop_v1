@@ -2,9 +2,9 @@ from flask import jsonify, request
 from marshmallow import ValidationError 
 from sqlalchemy import select, delete, func
 from sqlalchemy.exc import SQLAlchemyError
-from . import mechanics_bp
-from .schemas import mechanic_schema, mechanics_schemas
+from .schemas import mechanic_schema, mechanics_schema
 from app.models import Mechanic, db, ticket_mechanic, ServiceTicket
+from .import mechanics_bp
 
 
 @mechanics_bp.route('/', methods=['POST'])
