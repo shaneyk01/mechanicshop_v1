@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: "Mechanic Shop API v1"
-  description: "Auto-generated minimal Swagger definitions and paths for all routes"
+  description: "API for managing customers, mechanics, service tickets, and inventory in a mechanic shop."
 basePath: "/"
 schemes:
   - "http"
