@@ -3,9 +3,9 @@ import jose
 from datetime import datetime,timedelta,timezone
 from flask import request, jsonify
 from functools import wraps
+import os
 
-SECRET_KEY='Super secret secrets'
-
+SECRET_KEY = os.environ.get('SECRET_KEY') or "super secret secrets"
 def encode_customer_token(customer_id):
     payload ={
         "exp": datetime.now(timezone.utc) + timedelta(days=1, hours=1),
