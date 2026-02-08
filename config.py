@@ -5,7 +5,7 @@ import os
 class DevelopmentConfig:
     SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:Sageyk01!2024@localhost/mechanicshopapi_V1'
     DEBUG = True
-    cache_type ='SimpleCache'
+    CACHE_TYPE ='SimpleCache'
     CACHE_DEFAULT_TIMEOUT = 300
     
 class TestingConfig:
@@ -14,5 +14,11 @@ class TestingConfig:
         CACHE_TYPE= 'SimpleCache'
         
 class ProductionConfig:
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    uri = os.environ.get("DATABASE_URL")  # Render provides DATABASE_URL
+
+    # Fix Render's postgres:// → postgresql:// issue
+    if uri and uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+
+    SQLALCHEMY_DATABASE_URI = uri
     CACHE_TYPE = "SimpleCache"
