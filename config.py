@@ -15,16 +15,5 @@ class TestingConfig:
         
 
 class ProductionConfig:
-<<<<<<< HEAD
-   SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+   SQLALCHEMY_DATABASE_URI= os.environ.get("SQLALCHEMYDATABASE_URI")
    CACHE_TYPE = 'SimpleCache'
-=======
-    uri = os.environ.get("DATABASE_URL")  # Render provides DATABASE_URL
-
-    # Fix Render's postgres:// → postgresql:// issue
-    if uri and uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
-
-    SQLALCHEMY_DATABASE_URI = uri
-    CACHE_TYPE = "SimpleCache"
->>>>>>> refs/remotes/origin/main
