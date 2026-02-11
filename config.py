@@ -3,7 +3,7 @@ import os
 
 
 class DevelopmentConfig:
-    SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:Sageyk01!2024@localhost/mechanicshopapi_V1'
+    SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:Sageyk01!2024@127.0.0.1:3306/mechanicshopapi_V1'
     DEBUG = True
     CACHE_TYPE ='SimpleCache'
     CACHE_DEFAULT_TIMEOUT = 300
