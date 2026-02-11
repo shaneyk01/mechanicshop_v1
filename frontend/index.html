@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Shop Management</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <h2>Mechanic Shop</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#customers" class="nav-item" data-page="customers">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+                <a href="#mechanics" class="nav-item" data-page="mechanics">
+                    <i class="fas fa-user-hard-hat"></i>
+                    <span>Mechanics</span>
+                </a>
+                <a href="#tickets" class="nav-item" data-page="tickets">
+                    <i class="fas fa-ticket"></i>
+                    <span>Service Tickets</span>
+                </a>
+                <a href="#inventory" class="nav-item" data-page="inventory">
+                    <i class="fas fa-box"></i>
+                    <span>Inventory</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="user-info">
+                    <span id="user-name">Admin</span>
+                    <button class="btn-logout" id="logout-btn">
+                        <i class="fas fa-sign-out"></i> Logout
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-info">
+                                <h3 id="total-customers">0</h3>
+                                <p>Total Customers</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-user-hard-hat"></i>
+                            <div class="stat-info">
+                                <h3 id="total-mechanics">0</h3>
+                                <p>Total Mechanics</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-ticket"></i>
+                            <div class="stat-info">
+                                <h3 id="total-tickets">0</h3>
+                                <p>Service Tickets</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-box"></i>
+                            <div class="stat-info">
+                                <h3 id="total-inventory">0</h3>
+                                <p>Inventory Items</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h2>Recent Activity</h2>
+                        <div class="activity-list" id="recent-activity">
+                            <p class="text-muted">Loading recent activity...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customers Page -->
+                <div id="customers-page" class="page">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="add-customer-btn">
+                            <i class="fas fa-plus"></i> Add Customer
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customers-table">
+                                <tr>
+                                    <td colspan="5" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Mechanics Page -->
+                <div id="mechanics-page" class="page">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="add-mechanic-btn">
+                            <i class="fas fa-plus"></i> Add Mechanic
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Salary</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mechanics-table">
+                                <tr>
+                                    <td colspan="6" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Service Tickets Page -->
+                <div id="tickets-page" class="page">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="add-ticket-btn">
+                            <i class="fas fa-plus"></i> Create Ticket
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Mechanic</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tickets-table">
+                                <tr>
+                                    <td colspan="6" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Inventory Page -->
+                <div id="inventory-page" class="page">
+                    <div class="page-header">
+                        <button class="btn btn-primary" id="add-inventory-btn">
+                            <i class="fas fa-plus"></i> Add Item
+                        </button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventory-table">
+                                <tr>
+                                    <td colspan="4" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Modal Title</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/customers.js"></script>
+    <script src="scripts/mechanics.js"></script>
+    <script src="scripts/tickets.js"></script>
+    <script src="scripts/inventory.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

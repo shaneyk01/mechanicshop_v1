@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from app.models import db
 from app.extension import ma, limiter,cache
 from app.blueprints.customers import customers_bp
@@ -11,6 +12,9 @@ from flask_swagger_ui import get_swaggerui_blueprint
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(f'config.{config_name}')
+    
+    # Enable CORS for frontend
+    CORS(app)
     
     SWAGGER_URL = '/api/docs'
     API_URL = '/static/swagger.yaml'

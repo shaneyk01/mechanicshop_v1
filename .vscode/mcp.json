@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"my-mcp-server-943c341d": {
+			"url": "https://mcp.render.com/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
