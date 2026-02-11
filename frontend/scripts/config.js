@@ -1,7 +1,7 @@
 // API Configuration
 const API_CONFIG = {
     // Change this to your deployed API URL or localhost for development
-    BASE_URL: 'http://localhost:5000',
+    BASE_URL: 'http://localhost:5001',
     
     ENDPOINTS: {
         CUSTOMERS: '/customers',
