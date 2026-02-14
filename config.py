@@ -3,8 +3,7 @@ import os
 
 
 class DevelopmentConfig:
-    # Check for DATABASE_URL first (for Render/cloud), then fallback to SQLite
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") or 'sqlite:///local.db'
+    SQLALCHEMY_DATABASE_URI='mysql+connector://root:Sageyk01!2024@localhost/mechanicshopapi_V1'
     DEBUG = True
     CACHE_TYPE ='SimpleCache'
     CACHE_DEFAULT_TIMEOUT = 300
