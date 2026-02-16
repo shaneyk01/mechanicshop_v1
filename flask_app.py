@@ -3,7 +3,7 @@ from app import create_app
 from app.models import db
 
 
-app = create_app('ProductionConfig')
+app = create_app('DevelopementConfig')
 
 
 with app.app_context():
