@@ -3,14 +3,14 @@ info:
   version: "1.0.0"
   title: "Mechanic Shop API v1"
   description: "API for managing customers, mechanics, service tickets, and inventory in a mechanic shop."
-host: "https://mechanicshop-v1-1.onrender.com"
+host: "mechanicshop-v1-1.onrender.com"
 schemes:
   - "https"
 consumes:
   - "application/json"
 produces:
   - "application/json"    
-SecurityDefinitions:
+securityDefinitions:
   BearerAuth:
     type: apiKey
     name: Authorization
