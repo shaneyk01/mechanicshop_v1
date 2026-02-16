@@ -16,5 +16,5 @@ class TestingConfig:
 
 class ProductionConfig:
    # For Render deployment - uses PostgreSQL with psycopg2-binary
-   SQLALCHEMY_DATABASE_URI= os.environ.get("DATABASE_URL") or os.environ.get("SQLALCHEMY_DATABASE_URI")
+   SQLALCHEMY_DATABASE_URI= os.environ.get("SQLALCHEMY_DATABASE_URI") or ('sqlite:///production.db')
    CACHE_TYPE = 'SimpleCache'
